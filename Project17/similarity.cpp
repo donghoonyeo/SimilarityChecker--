@@ -10,11 +10,10 @@ public:
 
 	float getScore(int val1, int val2) {
 		int smallValue = (val1 > val2) ? val2 : val1;
-		int diff = (val1 > val2) ? (val1 - val2) : (val2 - val1);
+		int bigValue = smallValue == val1 ? val2 : val1;
 
-		if (diff / smallValue > 1) return 0;
+		if (bigValue > smallValue * 2) return 0;
 
-		return (1 - float(diff) / float(smallValue)) * 60;
-
+		return (((smallValue * 2) - bigValue) * 60) / smallValue;
 	}
 };
